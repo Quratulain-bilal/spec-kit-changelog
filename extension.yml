@@ -10,19 +10,29 @@ extension:
   license: MIT
 
 requires:
-  spec_kit: ">= 0.4.0"
+  speckit_version: ">= 0.4.0"
 
 provides:
   commands:
-    - speckit.changelog.generate
-    - speckit.changelog.release
-    - speckit.changelog.diff
-    - speckit.changelog.notify
+    - name: speckit.changelog.generate
+      file: commands/speckit.changelog.generate.md
+      description: "Generate a full changelog from spec git history showing all requirement changes over time"
+    - name: speckit.changelog.release
+      file: commands/speckit.changelog.release.md
+      description: "Generate release notes for a specific version or tag from spec changes"
+    - name: speckit.changelog.diff
+      file: commands/speckit.changelog.diff.md
+      description: "Generate a human-readable diff between two spec versions showing exactly what changed"
+    - name: speckit.changelog.notify
+      file: commands/speckit.changelog.notify.md
+      description: "Generate stakeholder notifications summarizing spec changes for team communication"
   hooks:
     - after_implement
 
 hooks:
   after_implement:
+    command: speckit.changelog.generate
+    optional: true
     description: "Offer to generate changelog entry after implementation"
 
 tags:
