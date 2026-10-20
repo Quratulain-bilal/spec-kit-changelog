@@ -1,33 +1,27 @@
 schema_version: "1.0"
-
 extension:
   id: changelog
   name: Spec Changelog
-  version: "1.0.0"
-  description: "Auto-generate changelogs and release notes from spec git history and requirement diffs"
-  author: Quratulain-bilal
-  repository: https://github.com/Quratulain-bilal/spec-kit-changelog
+  version: "1.0.1"
+  description: "Read-only requirement change reports from feature-scoped git history"
+  author: Quratulain-bilal; compatibility maintained by 3pepe3
+  repository: https://github.com/3pepe3/spec-kit-changelog
   license: MIT
-
+  category: docs
+  effect: read-only
 requires:
-  spec_kit: ">= 0.4.0"
-
+  speckit_version: ">=1.1.3,<1.3.0"
 provides:
   commands:
-    - speckit.changelog.generate
-    - speckit.changelog.release
-    - speckit.changelog.diff
-    - speckit.changelog.notify
-  hooks:
-    - after_implement
-
-hooks:
-  after_implement:
-    description: "Offer to generate changelog entry after implementation"
-
-tags:
-  - changelog
-  - release-notes
-  - documentation
-  - git-history
-  - notifications
+    - name: "speckit.changelog.generate"
+      file: "commands/speckit.changelog.generate.md"
+      description: "Read-only spec generate report"
+    - name: "speckit.changelog.release"
+      file: "commands/speckit.changelog.release.md"
+      description: "Read-only spec release report"
+    - name: "speckit.changelog.diff"
+      file: "commands/speckit.changelog.diff.md"
+      description: "Read-only spec diff report"
+    - name: "speckit.changelog.notify"
+      file: "commands/speckit.changelog.notify.md"
+      description: "Read-only spec notify report"
